@@ -1,5 +1,6 @@
 import pandas as pd
 from fastapi import FastAPI
+import ast
 
 app = FastAPI()
 
@@ -28,10 +29,16 @@ def get_food_recips(index: int):
     name = df['name'][index]
     description = df['description'][index]
     minutes = int(df['minutes'][index])
-    tags = df['tags'][index]
-    nutrition = df['nutrition'][index]
-    steps = df['steps'][index]
-    ingredients = df['ingredients'][index]
+    tags_str = df['tags'][index]
+    nutrition_str = df['nutrition'][index]
+    steps_str = df['steps'][index]
+    ingredients_str = df['ingredients'][index]
+
+    tags = ast.literal_eval(tags_str)
+    nutrition = ast.literal_eval(nutrition_str)
+    steps = ast.literal_eval(steps_str)
+    ingredients = ast.literal_eval(ingredients_str)
+
     return {
         "name": name,
         "description": description,
