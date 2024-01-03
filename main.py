@@ -39,6 +39,11 @@ def get_food_recips(index: int):
     steps = ast.literal_eval(steps_str)
     ingredients = ast.literal_eval(ingredients_str)
 
+    if name is None:
+        name = ""
+    if description is None:
+        description = ""
+
     return {
         "name": name,
         "description": description,
