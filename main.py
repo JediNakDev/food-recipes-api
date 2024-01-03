@@ -1,6 +1,7 @@
 import pandas as pd
 from fastapi import FastAPI
 import ast
+import math
 
 app = FastAPI()
 
@@ -39,9 +40,9 @@ def get_food_recips(index: int):
     steps = ast.literal_eval(steps_str)
     ingredients = ast.literal_eval(ingredients_str)
 
-    if name is None:
+    if isinstance(name, float) and math.isnan(name):
         name = ""
-    if description is None:
+    if isinstance(description, float) and math.isnan(description):
         description = ""
 
     return {

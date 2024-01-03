@@ -1,5 +1,6 @@
 import pandas as pd
 import ast
+import math
 
 # df = pd.read_csv("data34.csv")
 # print(df.size)
@@ -21,5 +22,10 @@ tags = ast.literal_eval(tags_str)
 nutrition = ast.literal_eval(nutrition_str)
 steps = ast.literal_eval(steps_str)
 ingredients = ast.literal_eval(ingredients_str)
+
+if isinstance(name, float) and math.isnan(name):
+    name = ""
+if isinstance(description, float) and math.isnan(description):
+    description = ""
 
 print(description)
